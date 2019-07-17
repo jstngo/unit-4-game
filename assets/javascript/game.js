@@ -8,11 +8,6 @@ var randomNumber = rNum(min,max);
 var uScore = 0;
 console.log(uScore);
 
-var bitcoinVal = Math.ceil(Math.random()*12);
-var litecoinlVal = Math.ceil(Math.random()*12);
-var dogecoinVal = Math.ceil(Math.random()*12);
-var rippleVal = Math.ceil(Math.random()*12);
-
 function rNum(min,max){
 return Math.floor(Math.random()*(max-min+1)+min);
 }
@@ -46,18 +41,17 @@ $('img').eq(3).on('click', function(){
     $('#userScore').text(uScore+=rippleVal);
 });
 
-$(document).on('click', function(){
+$('img').on('click', function(){
     if (uScore == randomNumber){
-
-        $('#wins').text(wins++);
+        wins++;
+        $('#wins').text(wins);
         gameSetup();
 
     }else if (uScore > randomNumber){
-        
-        $('#losses').text(losses++);
+        losses++;
+        $('#losses').text(losses);
         uScore = 0;
         $('#userScore').text(uScore);
- 
     }
 })
 
@@ -68,4 +62,11 @@ function gameSetup(){
     randomNumber = rNum(min,max);
     rNum();
     $('#ranNum').text(randomNumber);
+
+    bitcoinVal = Math.ceil(Math.random()*12);
+    litecoinlVal = Math.ceil(Math.random()*12);
+    dogecoinVal = Math.ceil(Math.random()*12);
+    rippleVal = Math.ceil(Math.random()*12);
 }
+
+gameSetup();
